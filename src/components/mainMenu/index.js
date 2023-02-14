@@ -1,13 +1,16 @@
 import React from "react";
-import styles from "./index.module.css";
+import { Outlet } from "react-router-dom";
 
 export const MainMenu = () => {
   return (
-    <nav className={styles.p}>
-      <button>user</button>
-      <button>contacts</button>
-      <button>shop</button>
-      <button>cart</button>
-    </nav>
+    <>
+      <nav>
+        <button>user</button>
+        <button>contacts</button>
+        <button>shop</button>
+        <button>cart</button>
+      </nav>
+      <Outlet/>
+    </>
   );
 };
