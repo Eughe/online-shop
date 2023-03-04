@@ -18,9 +18,9 @@ export const MainMenu = () => {
   const navigateToCart = () => navigate('/cart');
   const handleLogin = () => {
     if(isAuth){
-        dispatch(logout())
+        dispatch(logout());
     } else {
-        dispatch(login())
+        dispatch(login());
     }
 }
 

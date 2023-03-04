@@ -1,3 +1,5 @@
+import { isRejected } from "@reduxjs/toolkit";
+
 const data = {
     "products": [
       {
@@ -51,10 +53,14 @@ const data = {
     ]
 };
 
-export const fetchProducts = (time = 1000) => {
-    return new Promise((res) => {
+export const fetchProducts = (shouldReject = false) => {
+    return new Promise((res, rej) => {
         setTimeout(() => {
-            res(data);
-        }, time);
+          if (shouldReject) {
+            rej('server error');
+          } else {
+            res(data)};
+        }, 1000);
     });
 };
+
