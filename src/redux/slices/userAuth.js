@@ -2,17 +2,15 @@ import {createSlice, createSelector} from '@reduxjs/toolkit';
 
 
 const startState = {
-    name: '',
-    isAuth: false,
+    user: false,
 };
 
 export const userAuthSlice = createSlice({
     name: 'userAuth',
     initialState: startState,
     reducers: {
-        login: (state) => {
-            state.name = 'John';
-            state.isAuth = true;
+        setUser: (state, payload) => {
+           state.user = payload;
         },
         logout: (state) => {
             state.name = 'Please log in';
@@ -24,16 +22,16 @@ export const userAuthSlice = createSlice({
 
 export const userAuthReducer = userAuthSlice.reducer;
 
-export const {login, logout} = userAuthSlice.actions;
+export const {setUser, logout} = userAuthSlice.actions;
 
 export const selectUserAuth = ({userAuth}) => userAuth;
 
 export const selectIsAuth = createSelector(
     selectUserAuth,
-    ({isAuth}) => isAuth
+    ({user}) => Boolean(user)
 );
 
 export const selectName = createSelector(
     selectUserAuth,
-    ({name}) => name
+    ({user}) => user ? user.displayName : ''
 );

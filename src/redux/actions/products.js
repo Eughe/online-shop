@@ -16,7 +16,7 @@ export const getProducts = createAsyncThunk(
         const {setProducts, setIsLoading, setError} = actions;
 
         setIsLoading(true);
-        fetchProducts(true)
+        fetchProducts()
         .then(({products}) => setProducts(products))
         .catch((err) => setError(err))
     }
